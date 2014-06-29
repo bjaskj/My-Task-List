@@ -27,6 +27,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tblTasks.reloadData()
     }
     
+    // UITableViewDelegate
+    func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        if editingStyle == .Delete {
+            taskMgr.tasks.removeAtIndex(indexPath.row)
+            tblTasks.reloadData()
+        }
+    }
+    
     // UITableViewDataSource
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return taskMgr.tasks.count
